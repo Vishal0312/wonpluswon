@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import styles from "../styles/Home.modules.css"
 // import { Link } from "react-router-dom";
+import AllCourses from '../src/Components/AllCourses'
 import {
   Box,
   Hide,
@@ -58,7 +59,7 @@ setuser(item)
         fontSize="17px"
         // position="fixed"
         top="0"
-        width="99%"
+        width="100%"
       
         alignItems="center"
         bg="white"
@@ -85,7 +86,9 @@ setuser(item)
             <a href="/live">
               <img width='85px'src='https://media1.giphy.com/media/VbV4Pd353kZPfjXtfq/giphy.gif?cid=6c09b952aeanqdo30s8dasdng2uqm2dztkf6xe2urbglwzcy&rid=giphy.gif&ct=s' alt='live'></img>
             </a>
-            <a href="/demo">Demo</a></Hide>
+            <a href="/demo">Demo</a>
+            <AllCourses/>
+            </Hide>
         </Box>
         <Box display="flex" alignItems="center" gap="4">
           <Hide below="md">

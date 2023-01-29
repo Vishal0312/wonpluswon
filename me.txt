@@ -1,1 +1,4 @@
 hey everyone.
+
+1-npm i create-icon
+2-npm i react-auto-image-slider
