@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Footer from '../Components/Footer'
-import { Select } from '@chakra-ui/react';
+import { Heading, Select ,Text} from '@chakra-ui/react';
 import styles from '../styles/styles.module.css'
  const getData=()=>{
   return fetch(`https://lazy-bandanna-ant.cyclic.app/users/products` ).then((res)=>res.json())
@@ -52,10 +52,11 @@ const Home = () => {
         
         
          <div key={el.id} className={styles.AHome2} >
+          <Text fontSize='3xl' color="#b2f5ea">{el.title}</Text>
+          <Text fontSize='3xl' color="#b2f5ea">{el.subject}</Text>
          <iframe className={styles.iframe}
           src={el.url}
-          width="500"
-          height="300"
+         
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
             title={el.title} />

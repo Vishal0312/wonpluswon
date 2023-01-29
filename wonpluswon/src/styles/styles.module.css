@@ -3,7 +3,7 @@
 .AHome{
         width: 99%;
          display: grid;
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(4,1fr);
         gap: 5px;
         justify-content: space-around;
         margin-top: 10px;
@@ -13,9 +13,12 @@
         margin-bottom: 1rem; */
        
 }
-/* .AHome2{
-  border:1px solid red
-} */
+.AHome2{
+  border:1px solid #000;
+  /* text-align: center; */
+  margin: auto;
+
+}
 .AHome iframe{
   width:"500";
   height:"300";
