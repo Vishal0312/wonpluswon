@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import styles from "../styles/Home.modules.css"
 // import { Link } from "react-router-dom";
 import {
@@ -6,7 +6,7 @@ import {
   Hide,
   Image,
  Text,
-  Show,
+  Show,Link, Button
 } from "@chakra-ui/react";
 // import './nav.module.css'
 import { LockIcon, UnlockIcon } from "@chakra-ui/icons";
@@ -14,23 +14,43 @@ import { useDisclosure } from "@chakra-ui/react";
 import {
   Drawer,
   DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 
+import { useEffect } from "react";
+
+
 const Navbar= () => {
   const [size, setSize] = React.useState("");
+  const [user, setuser] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+
+  
+useEffect(() => {
+  // Perform localStorage action
+  const item = localStorage.getItem('token')
+setuser(item)
+
+},[])
+
+
 
   const handleClick = (newSize) => {
     setSize(newSize);
     onOpen();
   };
-const user=false
+
+const logout=()=>{
+ let item= localStorage.removeItem("token")
+setuser(item)
+  
+}
+
+
   return (
     <>
       <Box
@@ -72,10 +92,9 @@ const user=false
           <a href="/contact">CONTACT</a>
 
             {/* <LockIcon  style={{margin:"auto 5px",color:"#ff7846"}} />Login */}
-            <a href={!user && "/login"} >
+            <Link href={!user && "/login"} >
               {user ? (
-                <Box>
-                  <UnlockIcon
+                <Box onClick={logout}><UnlockIcon
                     style={{ margin: "auto 5px", color: "#ff7846" }}
                   />
                   Logout
@@ -86,7 +105,7 @@ const user=false
                   Login
                 </Box>
               )}
-            </a>
+            </Link>              
           </Hide>
         </Box>
         <Show below="md">
@@ -133,23 +152,21 @@ const user=false
                         Suscription
                       </p>
                     </a>
-                    <a href={!user && "/login"}>
-                      {user ? (
-                        <Box onClick={onClose} className="side">
-                          <UnlockIcon
-                            style={{ margin: "auto 5px", color: "#ff7846" }}
-                          />
-                          Logout
-                        </Box>
-                      ) : (
-                        <Box onClick={onClose} className="side">
-                          <LockIcon
-                            style={{ margin: "auto 5px", color: "#ff7846" }}
-                          />
-                          Login
-                        </Box>
-                      )}
-                    </a>
+                    <Link href={!user && "/login"} >
+              {user ? (
+                <Box onClick={logout}>
+                  <UnlockIcon
+                    style={{ margin: "auto 5px", color: "#ff7846" }}
+                  />
+                  Logout
+                </Box>
+              ) : (
+                <Box>
+                  <LockIcon style={{ margin: "auto 5px", color: "#ff7846" }} />
+                  Login
+                </Box>
+              )}
+            </Link>
                     {/* <a href="/login"  onClick={onClose}  ><p onClick={onClose} className='side'>Login</p></a> */}
                   </Box>
                 </DrawerBody>
